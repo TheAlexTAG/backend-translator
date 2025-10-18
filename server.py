@@ -2,6 +2,7 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Dict
+from text_processing import process
 
 from schemas import TranslateRequest, TranslateResponse, MixedBatchRequest
 import translation_service as svc
@@ -9,7 +10,7 @@ import translation_service as svc
 app = FastAPI(title="MT (CTranslate2 + Marian/OPUS-MT)")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://freefu.it", "chrome-extension://*"],  # or ["*"] if you don't use cookies
+    allow_origins=["https://freefu.it", "chrome-extension://*","https://fifahub.vercel.app"],  # or ["*"] if you don't use cookies
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -28,7 +29,8 @@ def healthz():
 @app.post("/translate", response_model=TranslateResponse)
 def translate(req: TranslateRequest):
     try:
-        translations = svc.translate_many(req.texts, req.src_lang, req.tgt_lang, req.options)
+        processesTexts = process(req.texts)
+        translations = svc.translate_many(processesTexts, req.src_lang, req.tgt_lang, req.options)
         return TranslateResponse(translations=translations)
     except ValueError as e:
         # e.g. unsupported pair
