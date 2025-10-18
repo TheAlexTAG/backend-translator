@@ -42,7 +42,7 @@ python -m pip show torch
 python convert.py
 
 # 4) run the API
-uvicorn main:app --host 0.0.0.0 --port 6001
+uvicorn server:app --host 0.0.0.0 --port 6001
 ```
 
 ## Test the service
