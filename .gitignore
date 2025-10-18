@@ -1,0 +1,19 @@
+.venv/
+**/__pycache__/
+*.py[cod]
+*.pyd
+*.pyo
+*.so
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cacraw_models/
+ct2_models/
+registry.tsv
+
+# -------------------------
+# Models & generated MT artifacts
+# -------------------------
+raw_models/       # HF snapshots (HUGE)
+ct2_models/       # converted CTranslate2 models (HUGE)
+registry.tsv      # generated; re-created by convert.py

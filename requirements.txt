@@ -1,0 +1,8 @@
+fastapi==0.115.*
+uvicorn[standard]==0.30.*
+ctranslate2==4.*
+sentencepiece>=0.2.0
+huggingface_hub>=0.25
+numpy>=1.24
+torch==2.4.*
+transformers>=4.44,<5
