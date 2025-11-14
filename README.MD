@@ -43,8 +43,9 @@ python convert.py
 
 # 4) run the API
 uvicorn server:app --host 0.0.0.0 --port 6001
-```
 
+```
+# run server_gui.py to have a graphical interface to to run the server and configure it.
 ## Test the service
 
 After starting the server (`uvicorn main:app --host 0.0.0.0 --port 6001`), you can verify it with:
